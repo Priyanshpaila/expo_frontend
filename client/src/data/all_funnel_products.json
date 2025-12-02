@@ -1,0 +1,337 @@
+{
+  "Solar Products": [
+    {
+      "name": "Solar Dual Pump Structure",
+      "details": [
+        {
+          "height": "4.5 mtr",
+          "capacity": "2000 ltr",
+          "location": "Jharkhand"
+        },
+        {
+          "height": "6 mtr",
+          "capacity": "5000 ltr",
+          "location": "Jharkhand"
+        },
+        {
+          "height": "6 mtr",
+          "capacity": "5000 ltr",
+          "location": "Odisa"
+        },
+        {
+          "height": "6 mtr",
+          "capacity": "5000 ltr",
+          "location": "Chhattisgarh"
+        },
+        {
+          "height": "9 mtr",
+          "capacity": "10000 ltr",
+          "location": "Chhattisgarh"
+        },
+        {
+          "height": "12 mtr",
+          "capacity": "10000 ltr",
+          "location": "Chhattisgarh"
+        },
+        {
+          "values": [
+            [
+              "6564123",
+              "75.58"
+            ],
+            [
+              "527085",
+              "9.01"
+            ],
+            [
+              "16632650",
+              "220.30"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Solar Module Mounting Structure",
+      "details": [
+        {
+          "values": [
+            [
+              "20",
+              "MWTT"
+            ]
+          ],
+          "location": "xyz"
+        },
+        {
+          "values": [
+            [
+              "18821000",
+              "220"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "16425000",
+              "180"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "29160000",
+              "360"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "13600000",
+              "160"
+            ]
+          ],
+          "location": "7.9MW"
+        },
+        {
+          "values": [
+            [
+              "47250000",
+              "500"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "143760000",
+              "1600"
+            ],
+            [
+              "31860000",
+              "400"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "512664350",
+              "8179"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "474337500",
+              "5838"
+            ],
+            [
+              "21605850",
+              "361"
+            ],
+            [
+              "16721000",
+              "1980"
+            ]
+          ]
+        },
+        {
+          "values": [
+            [
+              "4502134",
+              "52.78"
+            ]
+          ],
+          "location": "HDG"
+        },
+        {
+          "values": [
+            [
+              "23723858",
+              "304.89"
+            ]
+          ],
+          "location": "GALVALUME"
+        }
+      ]
+    },
+    {
+      "name": "Multi-Level Vehicle Parking Solar Structure",
+      "details": [
+        [
+          "6564123",
+          "75.58"
+        ]
+      ]
+    }
+  ],
+  "Transmission Line Tower Products": [
+    {
+      "name": "PG Tower HT",
+      "type": "765 kV"
+    },
+    {
+      "name": "PG Tower MS",
+      "type": "765 kV"
+    },
+    {
+      "name": "Non PG HT Tower",
+      "types": [
+        "132 kV",
+        "220 kV",
+        "400 kV",
+        "765 kV"
+      ]
+    },
+    {
+      "name": "Non PG MS Tower",
+      "types": [
+        "132 kV",
+        "220 kV",
+        "400 kV",
+        "765 kV"
+      ]
+    },
+    {
+      "name": "Tower",
+      "type": "Mild Steel"
+    },
+    {
+      "name": "PG 400 Kv Tower",
+      "types": [
+        "MS",
+        "HT"
+      ]
+    },
+    {
+      "name": "Sub Station 132 & 220",
+      "type": "MS/HT"
+    },
+    {
+      "name": "NON PG HT / PD",
+      "type": "Substation"
+    },
+    {
+      "name": "Pipe Structure",
+      "type": "TLT"
+    }
+  ],
+  "Rolling Mill Products": [
+    {
+      "name": "Angle (ISA)",
+      "dimensions": [
+        "60x60x4\u201310 mm",
+        "65x65x4\u201310 mm",
+        "70x70x5\u201310 mm",
+        "75x75x5\u201310 mm",
+        "80x80x6\u201312 mm",
+        "90x90x6\u201312 mm",
+        "100x100x6\u201315 mm",
+        "110x110x8\u201316 mm",
+        "120x120x8\u201315 mm",
+        "130x130x8\u201316 mm",
+        "150x150x10\u201320 mm",
+        "200x200x12\u201325 mm"
+      ]
+    },
+    {
+      "name": "Channel (ISMC)",
+      "dimensions": [
+        "150x75",
+        "175x75",
+        "200x75"
+      ]
+    },
+    {
+      "name": "Beam",
+      "dimensions": [
+        "152x152x10\u201313 mm",
+        "152x152x16 mm",
+        "100x116x10\u201313 mm",
+        "100x116x16 mm",
+        "203x203x10\u201313 mm",
+        "203x203x16 mm"
+      ]
+    }
+  ],
+  "GI Products": [
+    {
+      "name": "Fabricated (B-Series)",
+      "coating": [
+        "610 gsm",
+        "1000 gsm"
+      ]
+    },
+    {
+      "name": "Special Structure (TTC)",
+      "coating": [
+        "610 gsm",
+        "1000 gsm"
+      ]
+    },
+    {
+      "name": "Portal",
+      "coating": [
+        "610 gsm",
+        "1000 gsm"
+      ]
+    },
+    {
+      "name": "Smart Part Steel",
+      "coating": [
+        "610 gsm",
+        "1000 gsm"
+      ]
+    }
+  ],
+  "Railway Products": [
+    "152x152x10/11/13",
+    "152x152x16",
+    "203x203x10/11/13",
+    "203x203x16",
+    "100x116x10/11/13",
+    "100x116x16"
+  ],
+  "HMP / Lighting Products": [
+    {
+      "name": "Pentagonal Pole",
+      "type": "RRPP-075",
+      "desc": "Pentagonal Pole"
+    },
+    {
+      "name": "Hexagonal Pole",
+      "type": "RRHP-055",
+      "desc": "Hexagonal Pole"
+    },
+    {
+      "name": "Conical Pole",
+      "type": "RRCP-030",
+      "desc": "Conical Street Light Pole"
+    },
+    {
+      "name": "Street Pole",
+      "type": "RRSP-085",
+      "desc": "Street Pole"
+    },
+    {
+      "name": "Octagonal Pole",
+      "type": "RROP-020",
+      "desc": "Octagonal Pole 15x35x50"
+    },
+    {
+      "name": "High Mast",
+      "type": "Mast",
+      "desc": "20\u201325 Mtr"
+    },
+    {
+      "name": "Stadium Mast",
+      "type": "Mast",
+      "desc": "32 Mtr"
+    }
+  ]
+}
