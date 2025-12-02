@@ -78,24 +78,29 @@ export default function LeadForm({ onCreated }) {
     email: "",
     location: "",
     productDescription: "",
-    remark1: "",
-    remark2: "",
+    areaOfInterest: "",
+    firmName: "",
   });
 
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState({ open: false, type: "success", message: "" });
+  const [toast, setToast] = useState({
+    open: false,
+    type: "success",
+    message: "",
+  });
 
+  // NEW: accordion open state for additional details
+  const [showAdditional, setShowAdditional] = useState(false);
+
+  // ✅ Now only basic info is required; product/division/description are "additional"
   const isValid = useMemo(() => {
     const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
     const phoneOK = /^[0-9+\-()\s]{7,20}$/.test(form.customerPhone);
     return (
-      form.division &&
-      form.product &&
       form.customerName.trim() &&
       phoneOK &&
       emailOK &&
-      form.location.trim() &&
-      form.productDescription.trim()
+      form.location.trim()
     );
   }, [form]);
 
@@ -119,8 +124,8 @@ export default function LeadForm({ onCreated }) {
       email: "",
       location: "",
       productDescription: "",
-      remark1: "",
-      remark2: "",
+      areaOfInterest: "",
+      firmName: "",
     });
   }
 
@@ -145,8 +150,8 @@ export default function LeadForm({ onCreated }) {
         type: wa?.ok ? "success" : "error",
         message: `Saved! ${waMsg}`,
       });
-      resetForm();               // ✅ clear form right after success
-      onCreated?.();             // optional: refresh list in parent
+      resetForm(); // ✅ clear form right after success
+      onCreated?.(); // optional: refresh list in parent
     } catch (err) {
       setToast({
         open: true,
@@ -162,8 +167,8 @@ export default function LeadForm({ onCreated }) {
   const categories = Object.keys(productsData || {});
   const currentProducts = form.productCategory
     ? (productsData[form.productCategory] || [])
-        .map((p) => (typeof p === "string" ? p : p?.name || ""))
-        .filter(Boolean)
+      .map((p) => (typeof p === "string" ? p : p?.name || ""))
+      .filter(Boolean)
     : [];
 
   return (
@@ -173,78 +178,11 @@ export default function LeadForm({ onCreated }) {
         <div>
           <h3 className="text-base font-semibold text-slate-900">Basic Info</h3>
           <p className="text-sm text-slate-500">
-            Customer contact and product selection.
+            Customer contact and lead details.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {/* Division */}
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Division <span className="text-rose-500">*</span>
-            </label>
-            <select
-              name="division"
-              value={form.division}
-              onChange={onChange}
-              required
-              className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
-            >
-              <option value="">Select division</option>
-              {DIVISIONS.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Product Category */}
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Product Category <span className="text-rose-500">*</span>
-            </label>
-            <select
-              name="productCategory"
-              value={form.productCategory}
-              onChange={onCategoryChange}
-              required
-              className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
-            >
-              <option value="">Select category</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-            <p className="mt-1 text-xs text-slate-500">
-              Select a category to load products.
-            </p>
-          </div>
-
-          {/* Product */}
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Product <span className="text-rose-500">*</span>
-            </label>
-            <select
-              name="product"
-              value={form.product}
-              onChange={onChange}
-              required
-              disabled={!form.productCategory}
-              className="block w-full rounded-lg border-slate-300 disabled:bg-slate-100 disabled:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/30"
-            >
-              <option value="">Select product</option>
-              {currentProducts.map((p) => (
-                <option key={p} value={p}>
-                  {p}
-                </option>
-              ))}
-            </select>
-          </div>
-
           {/* Customer name */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
@@ -306,32 +244,16 @@ export default function LeadForm({ onCreated }) {
             />
           </div>
 
-          {/* Product description */}
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-slate-700 mb-1">
-              Product description <span className="text-rose-500">*</span>
-            </label>
-            <textarea
-              name="productDescription"
-              value={form.productDescription}
-              onChange={onChange}
-              rows={3}
-              required
-              placeholder="Describe the product or requirement..."
-              className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
-            />
-          </div>
-
           {/* Remark 1 */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
-              Remark 1
+             Area of Interest
             </label>
             <input
               name="remark1"
               value={form.remark1}
               onChange={onChange}
-              placeholder="Optional"
+              placeholder="Products"
               className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
             />
           </div>
@@ -339,15 +261,132 @@ export default function LeadForm({ onCreated }) {
           {/* Remark 2 */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
-              Remark 2
+             Firm Name
             </label>
             <input
               name="remark2"
               value={form.remark2}
               onChange={onChange}
-              placeholder="Optional"
+              placeholder="Company Name"
               className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
             />
+          </div>
+
+          {/* ACCORDION: Additional details (Division, Category, Product, Description) */}
+          <div className="md:col-span-2">
+            <button
+              type="button"
+              onClick={() => setShowAdditional((v) => !v)}
+              className="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-left text-sm font-medium text-slate-700 hover:bg-slate-100"
+            >
+              <span>
+                Additional details (Division & Product){" "}
+                <span className="text-xs text-slate-500">(optional)</span>
+              </span>
+              <span className="ml-2 inline-flex h-5 w-5 items-center justify-center">
+                <svg
+                  className={`h-4 w-4 transform transition-transform ${showAdditional ? "rotate-180" : "rotate-0"
+                    }`}
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M6 8l4 4 4-4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+
+            {showAdditional && (
+              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Division (optional) */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Division{" "}
+                    <span className="text-xs text-slate-500">(optional)</span>
+                  </label>
+                  <select
+                    name="division"
+                    value={form.division}
+                    onChange={onChange}
+                    className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
+                  >
+                    <option value="">Select division</option>
+                    {DIVISIONS.map((d) => (
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Product Category (optional) */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Product Category{" "}
+                    <span className="text-xs text-slate-500">(optional)</span>
+                  </label>
+                  <select
+                    name="productCategory"
+                    value={form.productCategory}
+                    onChange={onCategoryChange}
+                    className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
+                  >
+                    <option value="">Select category</option>
+                    {categories.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="mt-1 text-xs text-slate-500">
+                    Select a category to load products.
+                  </p>
+                </div>
+
+                {/* Product (optional) */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Product{" "}
+                    <span className="text-xs text-slate-500">(optional)</span>
+                  </label>
+                  <select
+                    name="product"
+                    value={form.product}
+                    onChange={onChange}
+                    disabled={!form.productCategory}
+                    className="block w-full rounded-lg border-slate-300 disabled:bg-slate-100 disabled:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/30"
+                  >
+                    <option value="">Select product</option>
+                    {currentProducts.map((p) => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Product description (optional) */}
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Product description{" "}
+                    <span className="text-xs text-slate-500">(optional)</span>
+                  </label>
+                  <textarea
+                    name="productDescription"
+                    value={form.productDescription}
+                    onChange={onChange}
+                    rows={3}
+                    placeholder="Describe the product or requirement..."
+                    className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
