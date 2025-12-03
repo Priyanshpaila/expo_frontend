@@ -30,11 +30,11 @@ EXPOSE ${PORT}
 CMD ["nginx", "-g", "daemon off;"]
 
 
-# docker build  --no-cache -t 192.168.13.72:5000/expofe_31oct2025 .      
-# docker run -d --name expofe_31oct2025 -p 81:81 expofe_31oct2025_image
+# docker build  --no-cache -t 192.168.13.72:5000/expofe_3dec2025 .      
+# docker run -d --name expofe_3dec2025 -p 81:81 expofe_3dec2025_image
 
-# docker tag expofe_31oct2025_image 192.168.13.72:5000/expofe_31oct2025
-# docker push 192.168.13.72:5000/expofe_31oct2025
-# docker pull 192.168.13.72:5000/expofe_31oct2025
-# docker run -d --name expofe_31oct2025 -p 81:81 192.168.13.72:5000/expofe_31oct2025
+# docker tag expofe_3dec2025_image 192.168.13.72:5000/expofe_3dec2025
+# docker push 192.168.13.72:5000/expofe_3dec2025
+# docker pull 192.168.13.72:5000/expofe_3dec2025
+# docker run -d --name expofe_3dec2025 -p 81:81 192.168.13.72:5000/expofe_3dec2025
 
