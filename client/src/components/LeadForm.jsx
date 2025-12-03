@@ -78,8 +78,8 @@ export default function LeadForm({ onCreated }) {
     email: "",
     location: "",
     productDescription: "",
-    areaOfInterest: "",
-    firmName: "",
+    remark1: "",
+    remark2: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -124,8 +124,8 @@ export default function LeadForm({ onCreated }) {
       email: "",
       location: "",
       productDescription: "",
-      areaOfInterest: "",
-      firmName: "",
+      remark1: "",
+      remark2: "",
     });
   }
 
@@ -144,7 +144,7 @@ export default function LeadForm({ onCreated }) {
     try {
       const resp = await createLead(form);
       const wa = resp?.whatsapp;
-      const waMsg = wa?.ok ? "WhatsApp message sent." : "WhatsApp send failed.";
+      const waMsg = wa?.ok ? "Mail message sent." : "Mail send failed.";
       setToast({
         open: true,
         type: wa?.ok ? "success" : "error",
