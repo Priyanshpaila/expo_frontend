@@ -78,8 +78,10 @@ export default function LeadForm({ onCreated }) {
     email: "",
     location: "",
     productDescription: "",
-    remark1: "",
-    remark2: "",
+    areaofInterest: "",
+    firmName: "",
+    feedback: "",
+    remark: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -97,10 +99,7 @@ export default function LeadForm({ onCreated }) {
     const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
     const phoneOK = /^[0-9+\-()\s]{7,20}$/.test(form.customerPhone);
     return (
-      form.customerName.trim() &&
-      phoneOK &&
-      emailOK &&
-      form.location.trim()
+      form.customerName.trim() && phoneOK && emailOK && form.location.trim()
     );
   }, [form]);
 
@@ -124,8 +123,10 @@ export default function LeadForm({ onCreated }) {
       email: "",
       location: "",
       productDescription: "",
-      remark1: "",
-      remark2: "",
+      areaofInterest: "",
+      firmName: "",
+      feedback: "",
+      remark: "",
     });
   }
 
@@ -244,28 +245,28 @@ export default function LeadForm({ onCreated }) {
             />
           </div>
 
-          {/* Remark 1 */}
+          {/* Area of Interest */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
-             Area of Interest
+              Area of Interest
             </label>
             <input
-              name="remark1"
-              value={form.remark1}
+              name="areaofInterest"
+              value={form.areaofInterest}
               onChange={onChange}
               placeholder="Products"
               className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
             />
           </div>
 
-          {/* Remark 2 */}
+          {/* Firm Name */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">
-             Firm Name
+              Firm Name
             </label>
             <input
-              name="remark2"
-              value={form.remark2}
+              name="firmName"
+              value={form.firmName}
               onChange={onChange}
               placeholder="Company Name"
               className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -382,6 +383,38 @@ export default function LeadForm({ onCreated }) {
                     onChange={onChange}
                     rows={3}
                     placeholder="Describe the product or requirement..."
+                    className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+
+                {/* ✅ Feedback (optional) */}
+                <div className="md:col-span-1">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Feedback{" "}
+                    <span className="text-xs text-slate-500">(optional)</span>
+                  </label>
+                  <textarea
+                    name="feedback"
+                    value={form.feedback}
+                    onChange={onChange}
+                    rows={3}
+                    placeholder="Customer feedback or comments..."
+                    className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+
+                {/* ✅ Remark (optional) */}
+                <div className="md:col-span-1">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Remark{" "}
+                    <span className="text-xs text-slate-500">(optional)</span>
+                  </label>
+                  <textarea
+                    name="remark"
+                    value={form.remark}
+                    onChange={onChange}
+                    rows={3}
+                    placeholder="Internal remark / follow-up note..."
                     className="block w-full rounded-lg border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/30"
                   />
                 </div>

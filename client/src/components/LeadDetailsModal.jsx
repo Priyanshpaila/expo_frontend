@@ -79,8 +79,8 @@ export default function LeadDetailsModal({ open, onClose, lead }) {
                 {lead.productDescription}
               </div>
             </Row>
-            <Row label="Remark 1">{lead.remark1 || "-"}</Row>
-            <Row label="Remark 2">{lead.remark2 || "-"}</Row>
+            <Row label="Area of Interest">{lead.areaofInterest || "-"}</Row>
+            <Row label="Firm Name">{lead.firmName || "-"}</Row>
           </div>
         </div>
       </div>

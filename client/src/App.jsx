@@ -132,8 +132,10 @@ export default function App() {
         Product: lead.product,
         Location: lead.location,
         "Product Description": lead.productDescription,
-        "Remark 1": lead.remark1 || "",
-        "Remark 2": lead.remark2 || "",
+        "Area of Interest": lead.areaofInterest || "",
+        "Firm Name": lead.firmName || "",
+        Feedback: lead.feedback || "",
+        Remark: lead.remark || "",
         "Created On": new Date(lead.createdAt).toLocaleString(),
       }));
 
@@ -151,18 +153,20 @@ export default function App() {
       });
 
       ws["!cols"] = [
-        { wch: 5 },
-        { wch: 25 },
-        { wch: 15 },
-        { wch: 30 },
-        { wch: 20 },
-        { wch: 25 },
-        { wch: 25 },
-        { wch: 20 },
-        { wch: 40 },
-        { wch: 20 },
-        { wch: 20 },
-        { wch: 22 },
+        { wch: 5 },   // S.No
+        { wch: 25 },  // Customer Name
+        { wch: 15 },  // Phone
+        { wch: 30 },  // Email
+        { wch: 20 },  // Division
+        { wch: 25 },  // Product Category
+        { wch: 25 },  // Product
+        { wch: 20 },  // Location
+        { wch: 40 },  // Product Description
+        { wch: 20 },  // Area of Interest
+        { wch: 20 },  // Firm Name
+        { wch: 30 },  // Feedback
+        { wch: 30 },  // Remark
+        { wch: 22 },  // Created On
       ];
 
       const wb = XLSX.utils.book_new();
